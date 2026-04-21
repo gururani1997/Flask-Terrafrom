@@ -1,19 +1,21 @@
 #!/bin/bash
 
-yum update -y
+set -e
 
-# Install Git
-yum install git -y
+apt update -y
+apt install -y git curl
 
-# Install Node.js
-curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
-yum install -y nodejs
+# Node.js
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt install -y nodejs
 
-# Install Python
-yum install -y python3
+# Python
+apt install -y python3 python3-pip
 
-# Clone project
-cd /home/ec2-user
+# Go to correct folder
+cd /home/ubuntu
+
+# Clone repo
 git clone https://github.com/gururani1997/Flask-Terrafrom.git
 cd Flask-Terrafrom
 
@@ -21,7 +23,7 @@ cd Flask-Terrafrom
 # Flask Backend
 # --------------------
 cd backend
-pip3 install flask pymongo
+pip3 install -r requirements.txt
 nohup python3 app.py > backend.log 2>&1 &
 
 cd ..
