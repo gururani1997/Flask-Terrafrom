@@ -23,7 +23,7 @@ resource "aws_ecs_task_definition" "flask" {
       environment = [
         {
           name  = "MONGO_URI"
-          value = "mongodb+srv://demouser:demouser@tasknode.9soyogs.mongodb.net/MongoLearn?appName=TaskNode"
+          value = "mongodb+srv://<demouser-username>:<demouser-password>@<cluster>.mongodb.net/MongoLearn?appName=<TaskName>"
         }
       ]
       logConfiguration = {
